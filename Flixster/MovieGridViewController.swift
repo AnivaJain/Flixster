@@ -1,0 +1,89 @@
+//
+//  MovieGridViewController.swift
+//  Flixster
+//
+//  Created by Sambhav Jain on 10/1/20.
+//  Copyright © 2020 CodingNinjas. All rights reserved.
+//
+
+import UIKit
+import AlamofireImage
+
+
+class MovieGridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+   
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var movies = [[String:Any]]()
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView.delegate  = self
+        collectionView.dataSource = self
+        
+        /*
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        
+        let width = (view.frame.size.width - layout.minimumInteritemSpacing * 3) / 3
+        layout.itemSize = CGSize(width: width, height: width * 3 / 2)
+        */
+        
+        
+        
+        
+        
+        let url = URL(string: "https://api.themoviedb.org/3/movie/297762/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
+              let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
+              let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
+              let task = session.dataTask(with: request) { (data, response, error) in
+//                  This will run when the network request returns
+                 if let error = error {
+                    print(error.localizedDescription)
+                 } else if let data = data {
+                    let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]  as! [String: Any]
+                    //--> Casting in Swift
+                    self.movies = dataDictionary["results"] as! [[String:Any]]
+                  //  print(self.movies)
+                    
+                    self.collectionView.reloadData()
+                 }
+              }
+              task.resume()
+        
+        
+
+    }
+    
+    
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            movies.count
+       }
+       
+       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieGridCell", for: indexPath) as! MovieGridCell
+      
+        let movie = movies[indexPath.item]
+        
+        let baseUrl = "https://image.tmdb.org/t/p/w185"
+        let posterPath = movie["poster_path"] as! String
+        let posterUrl = URL(string: baseUrl + posterPath)
+        cell.posterView.af_setImage(withURL: posterUrl!)
+        
+       let backdropPath = movie["backdrop_path"] as! String
+       let backdropUrl = URL(string: "https://image.tmbdb.org/t/p/w780" + backdropPath)
+        
+        return cell
+
+       }
+       
+    
+
+    
+
+}

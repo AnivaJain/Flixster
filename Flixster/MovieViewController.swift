@@ -67,8 +67,23 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
             
             let baseUrl = "https://image.tmdb.org/t/p/w185"
             let posterPath = movie["poster_path"] as! String
-            let posterUrl = URL(string: baseUrl + posterPath)
+            let posterUrl = URL(string: "https://image.tmdb.org/t/p/w780" + posterPath)
             cell.posterView.af_setImage(withURL: posterUrl!)
             return cell
         }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Loaind up details screen")
+        // Find the selected Movie
+        let cell = sender as! UITableViewCell // Get the selectd movie
+        let indexPath = tableView.indexPath(for: cell)! // Ask table view Which cell was pressed
+        let movie = movies[indexPath.row] // Then we can finally access our array 
+        let detailsViewController = segue.destination as! MovieDetailsViewController
+        detailsViewController.movie = movie
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // We ask ourselves...? How do we know which movie has been selected
+        // Pass the selected movie to the detailsViewController
+    }
 }

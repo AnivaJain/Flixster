@@ -15,6 +15,9 @@
 		DF4373252516C77000DB2251 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF4373242516C77000DB2251 /* Assets.xcassets */; };
 		DF4373282516C77000DB2251 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF4373262516C77000DB2251 /* LaunchScreen.storyboard */; };
 		DF46D2DF251A86FD00FA959B /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF46D2DE251A86FD00FA959B /* MovieData.swift */; };
+		DF4CB4A625266FC500358A87 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4CB4A525266FC500358A87 /* MovieDetailsViewController.swift */; };
+		DF8073682526BF0E00E341BF /* MovieGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8073672526BF0E00E341BF /* MovieGridViewController.swift */; };
+		DFF4EF8D2527D7D00033D563 /* MovieGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4EF8C2527D7D00033D563 /* MovieGridCell.swift */; };
 		FA4A218F94F60E676A0010DD /* Pods_Flixster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C01ACC2D65257CE6D54AE4FD /* Pods_Flixster.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +35,10 @@
 		DF4373272516C77000DB2251 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF4373292516C77000DB2251 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF46D2DE251A86FD00FA959B /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		DF4CB4A525266FC500358A87 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		DF8073672526BF0E00E341BF /* MovieGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridViewController.swift; sourceTree = "<group>"; };
+		DFF1178025281DFE00DC257E /* Flixster.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flixster.entitlements; sourceTree = "<group>"; };
+		DFF4EF8C2527D7D00033D563 /* MovieGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +82,13 @@
 		DF43731A2516C76F00DB2251 /* Flixster */ = {
 			isa = PBXGroup;
 			children = (
+				DFF1178025281DFE00DC257E /* Flixster.entitlements */,
 				DF43731B2516C76F00DB2251 /* AppDelegate.swift */,
 				DF43731D2516C76F00DB2251 /* SceneDelegate.swift */,
 				DF4373212516C76F00DB2251 /* Main.storyboard */,
+				DFF4EF8C2527D7D00033D563 /* MovieGridCell.swift */,
+				DF8073672526BF0E00E341BF /* MovieGridViewController.swift */,
+				DF4CB4A525266FC500358A87 /* MovieDetailsViewController.swift */,
 				DF12CA222517E1370046AAF4 /* MovieCell.swift */,
 				DF27F2D52516D0F20075C1FD /* MovieViewController.swift */,
 				DF4373242516C77000DB2251 /* Assets.xcassets */,
@@ -214,6 +225,9 @@
 			files = (
 				DF43731C2516C76F00DB2251 /* AppDelegate.swift in Sources */,
 				DF43731E2516C76F00DB2251 /* SceneDelegate.swift in Sources */,
+				DF4CB4A625266FC500358A87 /* MovieDetailsViewController.swift in Sources */,
+				DF8073682526BF0E00E341BF /* MovieGridViewController.swift in Sources */,
+				DFF4EF8D2527D7D00033D563 /* MovieGridCell.swift in Sources */,
 				DF12CA232517E1370046AAF4 /* MovieCell.swift in Sources */,
 				DF46D2DF251A86FD00FA959B /* MovieData.swift in Sources */,
 				DF27F2D62516D0F20075C1FD /* MovieViewController.swift in Sources */,
@@ -361,6 +375,7 @@
 			baseConfigurationReference = DD9E204C1047AB94AE410AA7 /* Pods-Flixster.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Flixster/Flixster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4X6X8TJK48;
 				INFOPLIST_FILE = Flixster/Info.plist;
@@ -380,8 +395,9 @@
 			baseConfigurationReference = B38A0BA40A725D44F6A4295F /* Pods-Flixster.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Flixster/Flixster.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4X6X8TJK48;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Flixster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
